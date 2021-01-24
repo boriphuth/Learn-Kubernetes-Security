@@ -7,7 +7,9 @@ kubectl create namespace demo || true
 kubectl config set-context --current --namespace=demo
 
 # enable dev mode for demo purpose, so no unseal is required
-helm install vault --set='server.dev.enabled=true' https://github.com/hashicorp/vault-helm/archive/v0.9.0.tar.gz
+helm repo add hashicorp https://helm.releases.hashicorp.com
+helm install vault hashicorp/vault --set 'server.dev.enabled=true'
+# helm install vault --set='server.dev.enabled=true' https://github.com/hashicorp/vault-helm/archive/v0.9.0.tar.gz
 
 sleep 30
 
